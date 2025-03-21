@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://aws-ia.github.io/terraform-aws-eks-blueprints/patterns/network/wireguard-with-cilium/">
       
       
-        <link rel="prev" href="../vpc-lattice/">
+        <link rel="prev" href="../tls-with-aws-pca-issuer/">
       
       
         <link rel="next" href="../../sso-iam-identity-center/">
@@ -698,11 +698,74 @@
   
   
     <li class="md-nav__item">
+      <a href="../../machine-learning/aws-neuron-efa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Neuron with EFA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../machine-learning/ml-capacity-block/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     ML Capacity Block Reservation (CBR)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning/ml-container-cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML Container Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning/multi-node-vllm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Node Inference with vLLM
   </span>
   
 
@@ -958,27 +1021,6 @@
   
   <span class="md-ellipsis">
     TLS w/ AWS PCA Issuer
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../vpc-lattice/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    VPC lattice
   </span>
   
 
@@ -1494,7 +1536,7 @@
 <ol>
 <li>
 <p>Deploy the example pods:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>example.yaml
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-f<span class="w"> </span>example.yaml
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pod/server created
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>service/server created
@@ -1563,7 +1605,7 @@ via the Helm values provided.</p>
 <li>
 <p>Deploy the Cilium connectivity resources to check and evaluate connectivity:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>cilium-test
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>cilium-test<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/cilium/cilium/v1.14.1/examples/kubernetes/connectivity-check/connectivity-check.yaml
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-n<span class="w"> </span>cilium-test<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/cilium/cilium/v1.14.1/examples/kubernetes/connectivity-check/connectivity-check.yaml
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>deployment.apps/echo-a created
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>deployment.apps/echo-b created
